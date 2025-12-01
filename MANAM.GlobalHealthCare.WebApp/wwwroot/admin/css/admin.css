@@ -1,0 +1,29 @@
+﻿.validation-summary-errors ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.validation-summary-errors {
+    padding: 1.25rem !important;
+    text-align: center;
+    color: #912741;
+    background-color: #fcd9e2;
+    border-color: #fbc6d3;
+    margin-bottom: 1rem;
+    border-radius: 0.475rem;
+}
+
+span.validation-error {
+    margin-top: 0.5rem;
+    font-size: .925rem;
+    color: #f1416c;
+    display: inline-block;
+}
+
+span.validation-error-2 {
+    margin-top: 0.5rem;
+    font-size: .925rem;
+    color: #f1416c;
+    display: inline-block;
+}

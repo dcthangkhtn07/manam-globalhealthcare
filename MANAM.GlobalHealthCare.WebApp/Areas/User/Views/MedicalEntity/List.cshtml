@@ -1,0 +1,87 @@
+﻿@model MedicalEntityListViewModel
+
+@{
+    string title = "Thông Tin Dịch Vụ Y Tế";
+    string folder = "medical-services";
+    switch (Model.Category)
+    {
+        case "Hospitals":
+            title = "Bệnh Viện";
+            folder = "hospitals";
+            break;
+        case "MedicalInformation":
+            title = "Thông Tin Y Tế";
+            folder = "medical-information";
+            break;
+        case "KeyServices":
+            title = "Dịch Vụ Then Chốt";
+            folder = "key-services";
+            break;
+        case "AdvancedTherapies":
+            title = "Liệu Pháp Tiên Phong";
+            folder = "advanced-therapies";
+            break;
+    }
+}
+
+<div class="container mt-5">
+    <div class="row g-4">
+        <h4 class="fw-bold">@title</h4>
+        @if (Model.Paged.Items != null)
+        {
+            foreach (var item in Model.Paged.Items)
+            {
+                <div class="col-12 col-md-6">
+                    <div class="card h-100 card-hover mt-3">
+                        <img src="/user/images/@folder/@item.AvatarUrl" class="card-img-top" alt="@item.Title">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-3">
+                                <h5 class="card-title fs-5 fw-bold">
+                                    @item.Title
+                                </h5>
+                                <p class="card-text">@item.Description</p>
+                            </div>
+
+                            <div class="mt-auto">
+                                <a class="text-decoration-none fs-6 fw-bold primary-color" href="/@item.Slug">
+                                    Tìm hiểu thêm <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    @if (Model.Paged.TotalPages > 1)
+    {
+        <div class="row g-4 mt-3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= Model.Paged.TotalPages; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="?page=@i">@i</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
+</div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page') || '1';
+
+    const pageItems = document.querySelectorAll('.pagination .page-item');
+
+    pageItems.forEach(item => {
+      const link = item.querySelector('a.page-link');
+      if (link) {
+        const linkPage = new URL(link.href).searchParams.get('page');
+        if (linkPage === currentPage) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      }
+    });
+</script>

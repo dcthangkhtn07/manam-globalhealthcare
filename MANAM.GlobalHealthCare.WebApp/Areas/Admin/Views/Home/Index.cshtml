@@ -1,0 +1,112 @@
+﻿@model CompanyProfileViewModel
+@{
+    ViewData["Title"] = "Giới Thiệu";
+}
+
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header border-0">
+        <div class="card-title m-0">
+            <h3 class="fw-bolder m-0">Thông Tin Công Ty</h3>
+        </div>
+    </div>
+    <form id="companyProfileForm" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+        <input type="hidden" id="id" name="id" value="@Model.Id" />
+        <div class="card-body border-top p-9">
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label required fw-bold fs-6">Địa Chỉ 1</label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <input id="headquarterAddress" type="text" name="headquarterAddress" class="form-control form-control-lg form-control-solid" data-display-name="Địa Chỉ 1" value="@Model.HeadquarterAddress" />
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label required fw-bold fs-6">Địa Chỉ 2</label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <input id="address" type="text" name="address" class="form-control form-control-lg form-control-solid" data-display-name="Địa Chỉ 2" value="@Model.Address" />
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label required fw-bold fs-6">Điẹn Thoại</label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <input id="hotline1" type="text" name="hotline1" class="form-control form-control-lg form-control-solid" data-display-name="Hotline 1" value="@Model.Hotline1" />
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label required fw-bold fs-6">Email</label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <input id="email" type="text" name="email" class="form-control form-control-lg form-control-solid" data-display-name="Email" value="@Model.Email" />
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <button id="btnSubmit" type="button" onclick="companyProfile.submitForm()" class="btn btn-primary">Cập Nhật</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        companyProfile.init();
+    });
+
+    var companyProfile = {
+        companyProfileForm: $('#companyProfileForm'),
+        btnSubmit: $('#btnSubmit'),
+
+        init: function () {
+            companyProfile.companyProfileForm.validate({
+                ignore: [],
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    'headquarterAddress': {
+                        dhlRequired: true,
+                    },
+                    'hotline1': {
+                        dhlRequired: true,
+                    },
+                    'email': {
+                        dhlRequired: true,
+                    },
+                    'address': {
+                        dhlRequired: true,
+                    },
+                },
+            });
+        },
+
+        submitForm: function () {
+            if (companyProfile.companyProfileForm.valid()) {
+                var formData = new FormData();
+
+                $.each(companyProfile.companyProfileForm.serializeArray(), function () {
+                    formData.append(this.name, this.value);
+                });
+
+                companyProfile.btnSubmit.addClass('disabled');
+
+                $.ajax({
+                    url: '/Admin/Home/Index',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        companyProfile.btnSubmit.removeClass('disabled');
+                        switch (result.status) {
+                            case 'OK': {
+                                toastr.success('Cập nhật thành công');
+                                break;
+                            };
+
+                            case 'Error': {
+                                toastr.error('Đã có lỗi xảy ra. Vui lòng thử lại');
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+</script>

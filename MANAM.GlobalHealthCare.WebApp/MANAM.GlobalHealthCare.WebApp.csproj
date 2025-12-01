@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Business\MANAM.GlobalHealthCare.Business.csproj" />
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Common\MANAM.GlobalHealthCare.Common.csproj" />
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Model\MANAM.GlobalHealthCare.Model.csproj" />
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Repository\MANAM.GlobalHealthCare.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\user\images\medical-services\" />
+  </ItemGroup>
+
+</Project>

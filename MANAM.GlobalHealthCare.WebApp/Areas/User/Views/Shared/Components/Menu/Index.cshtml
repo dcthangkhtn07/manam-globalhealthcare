@@ -1,0 +1,48 @@
+﻿@model MenuViewModel
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="/gioi-thieu-kamakura-japon">Về chúng tôi</a></li>
+        <li class="nav-item dropdown" id="nav-services">
+            <a class="nav-link dropdown-toggle" href="/dich-vu-y-te" id="servicesToggle" role="button" aria-expanded="false">
+                Dịch vụ Y tế
+            </a>
+            <ul class="dropdown-menu dropdown-mega" aria-labelledby="servicesToggle">
+                @if (Model.MedicalServices != null)
+                {
+                    var grouped = Model.MedicalServices.GroupBy(x => x.Type).ToList();
+                    foreach (var group in grouped)
+                    {
+                        string titleGroup = group.Key == "Primary" ? "Dịch vụ Y tế chính" : "Dịch vụ Y tế cao cấp";
+                        <li><div class="dropdown-header">@titleGroup</div></li>
+                        @foreach (var item in group)
+                        {
+                            <li>
+                                <a class="dropdown-item" href="@item.Url">@item.Title</a>
+                            </li>
+                        }
+
+                    }
+                }
+            </ul>
+        </li>
+        <li class="nav-item dropdown" id="nav-services">
+            <a class="nav-link dropdown-toggle" href="/benh-vien" id="servicesToggle" role="button" aria-expanded="false">
+                Bệnh viện
+            </a>
+            <ul class="dropdown-menu dropdown-mega" aria-labelledby="servicesToggle">
+                @if (Model.Hospitals != null)
+                {
+                    foreach (var item in Model.Hospitals)
+                    {
+                        <li>
+                            <a class="dropdown-item" href="@item.Url">@item.Title</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/san-pham-dich-vu">Sản phẩm / Dịch vụ</a></li>
+        <li class="nav-item"><a class="nav-link" href="/thong-tin-y-te">Thông tin Y tế</a></li>
+    </ul>
+</div>

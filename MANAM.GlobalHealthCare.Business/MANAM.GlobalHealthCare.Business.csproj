@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Common\MANAM.GlobalHealthCare.Common.csproj" />
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Model\MANAM.GlobalHealthCare.Model.csproj" />
+    <ProjectReference Include="..\MANAM.GlobalHealthCare.Repository\MANAM.GlobalHealthCare.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

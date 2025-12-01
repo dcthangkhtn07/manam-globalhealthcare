@@ -1,0 +1,41 @@
+﻿@model MedicalEntityViewModel
+@{
+    string folder = "medical-services";
+    switch (Model.Category)
+    {
+        case "Hospitals":
+            folder = "hospitals";
+            break;
+        case "MedicalInformation":
+            folder = "medical-information";
+            break;
+        case "KeyServices":
+            folder = "key-services";
+            break;
+        case "AdvancedTherapies":
+            folder = "advanced-therapies";
+            break;
+    }
+}
+
+<div class="container custom-container  bg-white">
+    <div class="row align-items-center mt-5">
+        <h3 class="fw-bold">@Model.Title</h3>
+        <p class="mt-3">@Model.Description</p>
+        <hr />
+        <div class="text-center">
+            <img src="/user/images/@folder/@Model.AvatarUrl" class="img-thumbnail" alt="Image">
+        </div>
+        <div class="table-of-contents">
+            <h2>Mục lục</h2>
+            <ul id="toc-list">
+            </ul>
+        </div>
+        <div class="align-items-center mt-3 post-content">
+            @Html.Raw(Model.Content)
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', generateTableOfContents);
+</script>

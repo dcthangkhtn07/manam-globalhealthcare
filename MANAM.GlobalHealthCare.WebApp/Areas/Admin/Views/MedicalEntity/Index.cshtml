@@ -1,0 +1,210 @@
+﻿@model MedicalEntityViewModel
+@{
+    string title = "Thông Tin Dịch Vụ Y Tế";
+    string folder = "medical-services";
+    ViewData["Title"] = title;
+}
+
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header border-0">
+        <div class="card-title m-0">
+            <h3 class="fw-bolder m-0">@title</h3>
+        </div>
+    </div>
+    <form id="newsForm" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+        <input type="hidden" id="id" name="id" value="@Model.Id" />
+        <input type="hidden" id="category" name="category" value="@Model.Category" />
+        <div class="card-body border-top p-9">
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label required fw-bold fs-6">Hình Ảnh</label>
+                <div class="col-lg-9">
+                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(../../user/images/medical-services/default.jpg)">
+                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url('../../user/images/@folder/@Model.AvatarUrl')"></div>
+                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="" data-bs-original-title="Đổi hình ảnh">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
+                                <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
+                            </svg>
+                            <input type="file" id="avatar" name="avatar" accept=".png, .jpg, .jpeg">
+                        </label>
+                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="" data-bs-original-title="Xóa avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="form-text">Định dạng cho phép: png, jpg, jpeg. Kích thước: 1400 x 800</div>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label required fw-bold fs-6">Tiêu Đề</label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <input id="title" type="text" name="title" class="form-control form-control-lg form-control-solid" data-display-name="Tiêu Đề" value="@Model.Title" />
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label fw-bold fs-6">
+                    <span class="required">Mô Tả</span>
+                </label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <textarea id="description" name="description" class="form-control form-control-lg form-control-solid" data-display-name="Mô Tả" rows="5">@Model.Description</textarea>
+                </div>
+            </div>
+            <div class="row mb-6">
+                <label class="col-lg-3 col-form-label fw-bold fs-6">
+                    <span class="required">Nội Dung</span>
+                </label>
+                <div class="col-lg-9 fv-row fv-plugins-icon-container">
+                    <textarea id="content" name="content" class="form-control form-control-lg form-control-solid" data-display-name="Nội Dung">@Model.Content</textarea>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <a href="/Admin/MedicalEntity/List?Category=@Model.Category" class="btn btn-secondary me-2">Trở Về</a>
+            @if (Model.Id == 0)
+            {
+                <button id="btnSubmit" type="button" onclick="news.submitForm()" class="btn btn-primary">Thêm</button>
+            }
+            else
+            {
+                <button type="button" onclick="news.deletenews()" class="btn btn-danger me-2">Xóa</button>
+                <button id="btnSubmit" type="button" onclick="news.submitForm()" class="btn btn-primary">Cập Nhật</button>
+            }
+        </div>
+    </form>
+</div>
+
+<script>
+    var news = {
+        newsForm: $('#newsForm'),
+        id: '@Model.Id',
+        btnSubmit: $('#btnSubmit'),
+
+        init: function () {
+            CKEDITOR.replace('content', {
+                font_names: 'Mulish/Mulish, sans-serif;' + CKEDITOR.config.font_names
+            });
+
+            news.newsForm.validate({
+                ignore: [],
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    'title': {
+                        dhlRequired: true,
+                    },
+                    'description': {
+                        dhlRequired: true,
+                    }
+                },
+            });
+        },
+
+        submitForm: function () {
+            var hasContent = true,
+                hasAvatar = true;
+
+            if (CKEDITOR.instances.content.getData() == '') {
+                hasContent = false;
+                $('#content').closest('.col-lg-9').append('<span id="title-error" class="validation-error-2">Nội Dung không được để trống.</span>');
+            }
+            else {
+                hasContent = true;
+                $('#content').closest('.col-lg-9').find('span.validation-error-2').remove();
+            }
+
+            if (news.id == 0) {
+                if ($('#avatar')[0].files[0] == undefined) {
+                    hasAvatar = false;
+                    $('.image-input-outline').closest('.col-lg-9').append('<span id="title-error" class="validation-error-2">Avatar không được để trống.</span>');
+                }
+                else {
+                    hasAvatar = true;
+                    $('.image-input-outline').closest('.col-lg-9').find('span.validation-error-2').remove();
+                }
+            }
+
+            if (news.newsForm.valid() && hasAvatar && hasContent) {
+                var formData = new FormData();
+                if ($('#avatar')[0].files[0] != undefined) {
+                    formData.append('avatar', $('#avatar')[0].files[0]);
+                }
+
+                $.each(news.newsForm.serializeArray(), function () {
+                    if (this.name == 'content') {
+                        formData.append(this.name, CKEDITOR.instances.content.getData());
+                    }
+                    else if (this.name == 'introForHomePage') {
+                        formData.append(this.name, CKEDITOR.instances.introForHomePage.getData());
+                    }
+                    else {
+                        formData.append(this.name, this.value);
+                    }
+                });
+
+                news.btnSubmit.addClass('disabled');
+
+                $.ajax({
+                    url: '/Admin/MedicalEntity/Index',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        news.btnSubmit.removeClass('disabled');
+                        switch (result.status) {
+                            case 'OK': {
+                                toastr.success('Cập nhật thành công');
+                                setTimeout(function () {
+                                    window.location.href = "/Admin/MedicalEntity/List?Category=" + '@Model.Category';
+                                }, 1000);
+                                break;
+                            };
+
+                            case 'Error': {
+                                toastr.error('Đã có lỗi xảy ra. Vui lòng thử lại');
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+        },
+
+        deletenews: function () {
+            var r = confirm('Bạn muốn xóa bài viết này?');
+            if (r) {
+                $.ajax({
+                    url: '/Admin/MedicalEntity/Delete',
+                    type: 'POST',
+                    data: {
+                        id: news.id
+                    },
+                    success: function (result) {
+                        switch (result.status) {
+                            case 'OK': {
+                                toastr.success('Cập nhật thành công');
+                                setTimeout(function () {
+                                    window.location.href = "/Admin/MedicalEntity/List?Category=" + '@Model.Category';
+                                }, 1000);
+                                break;
+                            };
+
+                            case 'Error': {
+                                toastr.error('Đã có lỗi xảy ra. Vui lòng thử lại');
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        news.init();
+    });
+</script>
