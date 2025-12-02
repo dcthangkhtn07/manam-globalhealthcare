@@ -30,7 +30,7 @@ namespace MANAM.GlobalHealthCare.Business
                     AvatarUrl = s.AvatarUrl ?? string.Empty,
                     Description = s.Description,
                     Slug = s.Slug,
-                    IntroForHomePage = s.IntroForHomePage
+                    Type = s.Type
                 },
                 pageIndex: pageIndex,
                 pageSize: pageSize
@@ -136,7 +136,7 @@ namespace MANAM.GlobalHealthCare.Business
             );
 
             result.MedicalServices = medicalServices.Items.ToList();
-
+            
             return result;
         }
 

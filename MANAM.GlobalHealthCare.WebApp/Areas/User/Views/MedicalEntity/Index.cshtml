@@ -26,16 +26,8 @@
         <div class="text-center">
             <img src="/user/images/@folder/@Model.AvatarUrl" class="img-thumbnail" alt="Image">
         </div>
-        <div class="table-of-contents">
-            <h2>Mục lục</h2>
-            <ul id="toc-list">
-            </ul>
-        </div>
-        <div class="align-items-center mt-3 post-content">
+        <div class="align-items-center mt-5 post-content">
             @Html.Raw(Model.Content)
         </div>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', generateTableOfContents);
-</script>

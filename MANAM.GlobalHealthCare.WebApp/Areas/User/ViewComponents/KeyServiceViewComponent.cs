@@ -1,5 +1,4 @@
-﻿using MANAM.GlobalHealthCare.Business;
-using MANAM.GlobalHealthCare.Business.Interfaces;
+﻿using MANAM.GlobalHealthCare.Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MANAM.GlobalHealthCare.WebApp.Areas.User.ViewComponents
@@ -16,7 +15,7 @@ namespace MANAM.GlobalHealthCare.WebApp.Areas.User.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _medicalEntityBusiness.GetMedicalEntityPagedAsync("KeyServices", 0, 4);
+            var data = await _medicalEntityBusiness.GetMedicalEntityPagedAsync("MedicalServices", 0, 100);
             return View("Index", data);
         }
     }

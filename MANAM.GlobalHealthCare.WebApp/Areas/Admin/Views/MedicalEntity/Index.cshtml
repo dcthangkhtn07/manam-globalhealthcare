@@ -69,7 +69,10 @@
             }
             else
             {
-                <button type="button" onclick="news.deletenews()" class="btn btn-danger me-2">Xóa</button>
+                if (Model.Type != "Global")
+                {
+                    <button type="button" onclick="news.deletenews()" class="btn btn-danger me-2">Xóa</button>
+                }
                 <button id="btnSubmit" type="button" onclick="news.submitForm()" class="btn btn-primary">Cập Nhật</button>
             }
         </div>

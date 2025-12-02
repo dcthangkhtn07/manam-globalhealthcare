@@ -49,4 +49,9 @@ app.MapAreaControllerRoute(
     areaName: "User",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "medical-entity",
+    pattern: "{slug}",
+    defaults: new { area = "User", controller = "MedicalEntity", action = "Index" });
+
 app.Run();

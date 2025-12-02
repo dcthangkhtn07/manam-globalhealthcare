@@ -16,7 +16,7 @@ namespace MANAM.GlobalHealthCare.WebApp.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> List(string category, int page = 1)
         {
-            var model = await _medicalEntityBusiness.GetMedicalEntityPagedAsync(category, page);
+            var model = await _medicalEntityBusiness.GetMedicalEntityPagedAsync(category, page, 1000);
             return View(model);
         }
 

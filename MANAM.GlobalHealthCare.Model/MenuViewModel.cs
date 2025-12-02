@@ -3,6 +3,8 @@
     public class MenuViewModel
     {
         public List<MenuItemViewModel> MedicalServices { get; set; } = new List<MenuItemViewModel>();
+
+        public string? PhoneNumber { get; set; } = string.Empty;
     }
 
     public class MenuItemViewModel

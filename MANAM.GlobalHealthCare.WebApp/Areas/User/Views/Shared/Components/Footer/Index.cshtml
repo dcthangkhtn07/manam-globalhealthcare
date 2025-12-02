@@ -2,151 +2,20 @@
 
 <footer class="site-footer">
     <div class="container">
-        <div class="row gy-4">
-            <div class="col-12 col-md-4">
-                <div class="logo">
-                    <img src="/user/images/logo.svg" alt="Logo">
-                </div>
-                <p class="desc fs-6 fw-bold">Trụ sở chính:</p>
-                <p class="desc fs-6">@Model.HeadquarterAddress</p>
-                <p class="desc fs-6 fw-bold mt-2">Liên hệ</p>
-                <p class="desc fs-6">Hotline 1: @Model.Hotline1</p>
-                <p class="desc fs-6">Hotline 2: @Model.Hotline2</p>
-                <p class="desc fs-6">Email: @Model.Email</p>
-                <p class="desc fs-6">Địa chỉ: @Model.Address</p>
-            </div>
-            <div class="col-12 col-md-2">
-                <h6>Liên kết</h6>
-                <div class="footer-links">
-                    <a href="~/" class="fs-6">Trang chủ</a>
-                    <a href="/gioi-thieu" class="fs-6">Giới thiệu</a>
-                    <a href="/thong-tin-y-te" class="fs-6">Thông tin Y tế</a>
-                    <a href="/benh-vien" class="fs-6">Bệnh viện</a>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <h6>Chính sách của chúng tôi</h6>
-                <ul class="mt-2 no-underline">
-                    <li>
-                        <a href="https://drive.google.com/file/d/17ZSw8V192o0RAmtO2VAxQx4u6EtMMQhi/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">1. Giới thiệu</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/1J4z-3JaMVyIfx0BRCgjXLAhYgZLl8ADD/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">2. Hướng dẫn mua hàng</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/1QRH5_qOJK0gQ4IgSpVzzB9pUCzZkJ3ZB/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">3. Chính sách đổi trả</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/1bLWxKkE5XC7pQItZF0sThGrgtl3_R5Vf/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">4. Chính sách bảo mật</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/11ADNuMDpkyXFjUQXG63nBOCVlVJMWCe0/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">5. Điều khoản dịch vụ</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/1MfhkG1tf3sfXcO2rbt8mJOcCvLvu2-mS/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">6. Chính sách vận chuyển</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/1FQ1fw2YDQejK19MHsi6BmeFTYyCq0ZGO/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">7. Chính sách thanh toán</a>
-                    </li>
-                    <li>
-                        <a href="https://drive.google.com/file/d/1RSrV7o-lRXKU2Kkfa4D653oSFsRoq1eZ/view?usp=drive_link" class="hover:text-[#B4903A]" target="_blank">8. Chính sách bảo hành</a>
-                    </li>
-                </ul>
+        <div class="row gy-4" id="lien-he">
+            <div class="col-12 col-md-6">
+                <p class="fs-3 primary-color">MANAM - Đối Tác Y Tế Toàn Cầu</p>
+                <p class="fs-6">MANAM là một đơn vị hỗ trợ tư vấn và bệnh nhân Việt Nam đi chữa bệnh tại nước ngoài chuyên nghiệp từ năm 2017, đặc biệt trong Ung thư và các bệnh khó phức tạp. MANAM còn nổi bật với kênh chính thức cung cấp dịch vụ cho các thư viện đầu thế giới của Mỹ. Nổi bật với các kênh quan hệ dành riêng cho các đối tác y tế danh tiếng toàn cầu.</p>
             </div>
 
-            <div class="col-12 col-md-3">
-                <h6>Theo dõi</h6>
-                <div class="social-icons d-flex align-items-center mt-2">
-                    <a href="@Model.FacebookAddress" class="me-2" aria-label="facebook" target="_blank">
-                        <img src="/user/images/facebook.webp" alt="fb" style="width:36px;height:36px;border-radius:50%;">
-                    </a>
-                    <a href="@Model.ZaloAddress" class="me-2" aria-label="zalo" target="_blank">
-                        <img src="/user/images/zalo.svg" alt="zalo" style="width:36px;height:36px;border-radius:50%;">
-                    </a>
-                    <a href="@Model.YoutubeAddress" aria-label="youtube" target="_blank">
-                        <img src="/user/images/youtube-circle.webp" alt="yt" style="width:36px;height:36px;border-radius:50%;">
-                    </a>
-                </div>
-                <div id="successAlertEmail" class="alert alert-success mt-3 mb-0 d-none" role="alert" style="padding: 0.5rem">
-                    Đăng Kí Thành Công
-                </div>
-                <form id="registerEmailForm">
-                    <div class="row g-3 mt-2">
-                        <div class="col-12 col-md-12">
-                            <input id="emailSubscribers" name="emailSubscribers" class="form-control" placeholder="Địa chỉ Email nhận tin tức" type="email" style="width: 200px; font-size: 0.9rem">
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex align-items-center mt-3">
-                        <button id="registerEmailBtn" type="button" class="btn btn-register me-3">
-                            Đăng Kí
-                        </button>
-                    </div>
-                </form>
+            <div class="col-12 col-md-6">
+                <p class="fs-3 primary-color">&nbsp;</p>
+                <p class="fs-6"><i class="bi bi-pin-map-fill primary-color"></i> @Model.HeadquarterAddress</p>
+                <p class="fs-6"><i class="bi bi-pin-map-fill primary-color"></i> @Model.Address</p>
+                <p class="fs-6"><i class="bi bi-telephone-inbound primary-color"></i> @Model.Hotline1</p>
+                <p class="fs-6"><i class="bi bi-envelope primary-color"></i> @Model.Email</p>
             </div>
-        </div>
-        <div class="footer-bottom d-flex justify-content-between align-items-center pt-3">
-            <div>© 2025 KAMAKURA JAPON. All rights reserved.</div>
+
         </div>
     </div>
 </footer>
-
-<script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-        const registerEmailForm = document.getElementById("registerEmailForm");
-        const emailSubscribers = document.getElementById("emailSubscribers");
-        const registerEmailBtn = document.getElementById("registerEmailBtn");
-        const successAlert = document.getElementById("successAlertEmail");
-
-        function showError(element) {
-            element.classList.add("is-invalid");
-        }
-
-        function clearError(element) {
-            element.classList.remove("is-invalid");
-        }
-
-        registerEmailBtn.addEventListener("click", function (e) {
-            let isValid = true;
-            let firstError = null;
-
-            [emailSubscribers].forEach(el => clearError(el));
-
-
-            if (emailSubscribers.value.trim() === "") {
-                showError(emailSubscribers);
-                isValid = false;
-                firstError = firstError || emailSubscribers;
-            }
-
-            if (!isValid) {
-                firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-                return;
-            }
-
-            $.ajax({
-                url: '/User/ContactRequest/EmailSubscribers',
-                type: 'POST',
-                data: $('#registerEmailForm').serializeArray(),
-                success: function (result) {
-                    switch (result.status) {
-                        case 'OK': {
-                            successAlert.classList.remove("d-none");
-                            registerEmailForm.reset();
-                            [emailSubscribers].forEach(el => el.classList.remove("is-invalid"));
-                            setTimeout(() => {
-                               successAlert.classList.add("d-none");
-                            }, 3000);
-                            break;
-                        };
-
-                        case 'Error': {
-                            alert('Đã có lỗi xảy ra. Vui lòng thử lại sau');
-                            break;
-                        }
-                    }
-                }
-            });
-        });
-    });
-</script>
